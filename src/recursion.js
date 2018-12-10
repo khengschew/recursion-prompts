@@ -529,6 +529,15 @@ var alternateSign = function(array) {
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+  var textLookup = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  var strings = str.split(' ');
+  var newStr = Number.isNaN(Number.parseInt(strings[0])) ? strings[0] : textLookup[Number.parseInt(strings[0])];
+
+  if (str.length > 0 && strings.length === 1) {
+    return newStr;
+  } else {
+    return [newStr, numToText(strings.slice(1, strings.length).join(' '))].join(' ');
+  }
 };
 
 
