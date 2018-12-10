@@ -360,6 +360,16 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {
 // fibonacci(5); // [0,1,1,2,3,5]
 // Note: The 0 is not counted.
 var fibonacci = function(n) {
+  if (n <= 0) {
+    return null;
+  } else if (n === 1) {
+    return [0, 1];
+  } else {
+    var currChain = fibonacci(n-1);
+    var prev1 = currChain.length - 1;
+    var prev2 = currChain.length - 2;
+    return currChain.concat(currChain[prev1] + currChain[prev2]);
+  }
 };
 
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
